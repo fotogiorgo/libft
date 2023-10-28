@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jofoto <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: jofoto <jofoto@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/06 20:51:32 by jofoto            #+#    #+#             */
-/*   Updated: 2022/11/06 20:57:57 by jofoto           ###   ########.fr       */
+/*   Created: 2022/10/30 16:28:03 by jofoto            #+#    #+#             */
+/*   Updated: 2023/10/27 20:08:01 by jofoto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stdlib.h>
+#include "../libft.h"
 
-t_list	*ft_lstnew(void *content)
+void	*ft_calloc(size_t count, size_t size)
 {
-	t_list	*root;
+	void	*ret;
 
-	root = malloc(sizeof(t_list));
-	if (root == 0)
-		return (0);
-	root->content = content;
-	root->next = NULL;
-	return (root);
+	ret = malloc(size * count);
+	if (ret)
+		ft_bzero(ret, size * count);
+	return (ret);
 }

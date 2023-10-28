@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jofoto <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: jofoto <jofoto@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 15:22:25 by jofoto            #+#    #+#             */
-/*   Updated: 2022/11/07 19:11:29 by jofoto           ###   ########.fr       */
+/*   Updated: 2023/10/27 20:21:06 by jofoto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #ifndef LIBFT_H
 # define LIBFT_H
 # include <stdlib.h>
@@ -61,5 +62,10 @@ void	ft_putendl_fd(char *s, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 char	*ft_itoa(int n);
+char	*get_next_line(int fd);
+char	*ft_itoa_unsigned_long(unsigned long long n, int base, int alph);
+char	*ft_itoa_base(int n, int base, int alph);
+char	*ft_itoa_unsigned(unsigned int n);
+int		is_char_in_set(char c, char *set);
 
 #endif

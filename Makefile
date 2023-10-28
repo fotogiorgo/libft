@@ -3,59 +3,80 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ehida <marvin@42.fr>                       +#+  +:+       +#+         #
+#    By: jofoto <jofoto@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/06 16:07:12 by ehida             #+#    #+#              #
-#    Updated: 2023/01/08 12:59:12 by ehida            ###   ########.fr        #
+#    Updated: 2023/10/27 20:21:34 by jofoto           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
-NAME = libft.a
+NAME =			libft.a
 
-SRC = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c \
-		ft_isprint.c ft_toupper.c ft_tolower.c ft_strlen.c ft_memset.c \
-		ft_bzero.c ft_memcpy.c ft_memmove.c ft_strchr.c ft_strrchr.c \
-		ft_strlcpy.c ft_strlcat.c ft_strncmp.c ft_memchr.c ft_memcmp.c \
-		ft_strnstr.c ft_atoi.c ft_calloc.c ft_strdup.c ft_substr.c \
-		ft_strjoin.c ft_strtrim.c ft_striteri.c ft_strmapi.c \
-		ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c\
-		ft_itoa.c ft_split.c
+FLAGS =			-Wall -Wextra -Werror
 
-SRC_BONUS = ft_lstnew_bonus.c ft_lstadd_front_bonus.c \
-			ft_lstsize_bonus.c ft_lstlast_bonus.c ft_lstadd_back_bonus.c \
-			ft_lstdelone_bonus.c ft_lstclear_bonus.c ft_lstiter_bonus.c \
-			ft_lstmap_bonus.c
+SRC =			list/ft_lstadd_back_bonus.c \
+				list/ft_lstclear_bonus.c \
+				list/ft_lstiter_bonus.c \
+				list/ft_lstmap_bonus.c \
+				list/ft_lstsize_bonus.c \
+				list/ft_lstadd_front_bonus.c \
+				list/ft_lstdelone_bonus.c \
+				list/ft_lstlast_bonus.c \
+				list/ft_lstnew_bonus.c \
+				memory/ft_bzero.c \
+				memory/ft_calloc.c \
+				memory/ft_memchr.c \
+				memory/ft_memcmp.c \
+				memory/ft_memcpy.c \
+				memory/ft_memmove.c \
+				memory/ft_memset.c \
+				print/ft_putchar_fd.c \
+				print/ft_putendl_fd.c \
+				print/ft_putnbr_fd.c \
+				print/ft_putstr_fd.c \
+				strings/is_char_in_set.c \
+				strings/ft_isascii.c \
+				strings/ft_strdup.c \
+				strings/ft_strlcat.c \
+				strings/ft_strmapi.c \
+				strings/ft_strrchr.c \
+				strings/ft_isalnum.c \
+				strings/ft_isdigit.c \
+				strings/ft_split.c \
+				strings/ft_striteri.c \
+				strings/ft_strlcpy.c \
+				strings/ft_strncmp.c \
+				strings/ft_strtrim.c \
+				strings/ft_isalpha.c \
+				strings/ft_isprint.c \
+				strings/ft_strchr.c \
+				strings/ft_strjoin.c \
+				strings/ft_strlen.c \
+				strings/ft_strnstr.c \
+				strings/ft_substr.c \
+				streams/get_next_line.c \
+				streams/get_next_line_utils.c \
+				convertions/ft_tolower.c \
+				convertions/ft_toupper.c \
+				convertions/ft_atoi.c \
+				convertions/ft_itoa_base.c \
+				convertions/ft_itoa_unsigned_long.c \
+				convertions/ft_itoa_unsigned.c \
+				convertions/ft_itoa.c
 
-OBJ = ft_isalpha.o ft_isdigit.o ft_isalnum.o ft_isascii.o \
-		ft_isprint.o ft_toupper.o ft_tolower.o ft_strlen.o ft_memset.o \
-		ft_bzero.o ft_memcpy.o ft_memmove.o ft_strchr.o ft_strrchr.o \
-		ft_strlcpy.o ft_strlcat.o ft_strncmp.o ft_memchr.o ft_memcmp.o \
-		ft_strnstr.o ft_atoi.o ft_calloc.o ft_strdup.o ft_substr.o \
-		ft_strjoin.o ft_strtrim.o ft_striteri.o ft_strmapi.o \
-		ft_putchar_fd.o ft_putstr_fd.o ft_putendl_fd.o ft_putnbr_fd.o\
-		ft_itoa.o ft_split.o
-
-OBJ_BONUS = ft_lstnew_bonus.o ft_lstadd_front_bonus.o \
-		  	ft_lstsize_bonus.o ft_lstlast_bonus.o ft_lstadd_back_bonus.o \
-			ft_lstdelone_bonus.o ft_lstclear_bonus.o ft_lstiter_bonus.o \
-			ft_lstmap_bonus.o	
+OBJ		= $(SRC:%.c=%.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
 	ar -ruvcs $(NAME) $(OBJ) 
 
-%.o: %.c
-	cc -Wall -Werror -Wextra -c -o $@ $^
+$(OBJ): %.o: %.c
+	$(CC) $(FLAGS) -c $? -o $@
 
-bonus: $(OBJ_BONUS)
-
-$(OBJ_BONUS): $(NAME)
-		cc -Wall -Werror -Wextra -c $(SRC_BONUS)
-		ar rc $(NAME) $(OBJ_BONUS)
 clean:
-	/bin/rm -f $(OBJ) $(OBJ_BONUS)
+	/bin/rm -f $(OBJ)
 
 fclean: clean
 	/bin/rm -f $(NAME)
